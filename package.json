@@ -45,10 +45,7 @@
     "rollup-plugin-babel": "2.7.1",
     "sinon": "1.17.7"
   },
-  "dependencies": {
-    "debug": "2.6.1",
-    "lodash": "4.17.4"
-  },
+  "dependencies": {},
   "bugs": {
     "url": "https://github.com/Lukasz-pluszczewski/vin-decode/issues"
   },

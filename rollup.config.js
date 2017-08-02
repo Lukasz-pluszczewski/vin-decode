@@ -13,15 +13,12 @@ export default {
   ],
   external: external,
   exports: 'named',
-  globals: {
-    lodash: '_',
-    debug: 'debug',
-  },
+  globals: {},
   targets: [
     {
       dest: pkg.main,
       format: 'umd',
-      moduleName: 'mi18n',
+      moduleName: 'vin-decode',
       sourceMap: true,
     },
     {
