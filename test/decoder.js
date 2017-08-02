@@ -36,7 +36,8 @@ describe('vin-decoder', () => {
       manufacturer: 'Ford Germany',
       details: 'PXXGC',
       securityCode: 'D',
-      year: 'P',
+      possibleYears: [1993],
+      year: 1993,
       assemblyPlant: '8',
       serialNumber: 'K23759',
     });
@@ -45,7 +46,8 @@ describe('vin-decoder', () => {
       manufacturer: 'NUMMI USA',
       details: 'BR32E',
       securityCode: '7',
-      year: '7',
+      possibleYears: [2007],
+      year: 2007,
       assemblyPlant: 'Z',
       serialNumber: '923602',
     });

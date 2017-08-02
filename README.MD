@@ -27,5 +27,7 @@ npm i --save vin-decode
 ```bash
 import vinDecoder from 'vin-decode';
 
-vinDecoder.decode('EXAMPLEVINNUMBER'); // will return object with info from vin
+vinDecoder('BADVINNUMBER'); // will return false (currently checks only the length of VIN)
+vinDecoder('EXAMPLEVINNUMBER').split(); // will return object of codes from VIN
+vinDecoder('EXAMPLEVINNUMBER').decode(); // will return object of codes from vin with manufacturer, country, year fields decoded
 ```

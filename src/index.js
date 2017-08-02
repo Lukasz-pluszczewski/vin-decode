@@ -12,8 +12,41 @@ const indexes = {
   SECURITY_CODE: 8,
   YEAR: 9,
   ASSEMBLY_PLANT: 10,
-  SERIAL_NUMBER_START: 11
+  SERIAL_NUMBER_START: 11,
 };
+
+const yearCodes = [
+  'A',
+  'B',
+  'C',
+  'D',
+  'E',
+  'F',
+  'G',
+  'H',
+  'J',
+  'K',
+  'L',
+  'M',
+  'N',
+  'P',
+  'R',
+  'S',
+  'T',
+  'V',
+  'W',
+  'X',
+  'Y',
+  '1',
+  '2',
+  '3',
+  '4',
+  '5',
+  '6',
+  '7',
+  '8',
+  '9',
+];
 
 const find = (collection, code) => {
   let result = null;
@@ -31,11 +64,30 @@ const find = (collection, code) => {
 const decodeManufacturer = code => {
   const result = find(manufacturers, code);
   return result ? result.name : result;
-}
+};
 const decodeCountry = code => {
   const result = find(countries, code);
   return result ? result.name : result;
-}
+};
+const decodeYear = code => {
+  const now = new Date();
+  const currentYear = now.getFullYear();
+
+  const yearOffset = yearCodes.indexOf(code);
+
+  const possibleYears = [
+    2010 + yearOffset,
+    1980 + yearOffset,
+  ];
+
+  if (possibleYears[1] > currentYear) {
+    return [possibleYears[1]];
+  }
+  if (possibleYears[0] > currentYear) {
+    return [possibleYears[1]];
+  }
+  return possibleYears;
+};
 
 const vinDecoder = vin => {
   const valid = validate(vin);
@@ -52,6 +104,8 @@ const vinDecoder = vin => {
         ...values,
         manufacturer: decodeManufacturer(values.manufacturer),
         country: decodeCountry(values.country),
+        possibleYears: decodeYear(values.year),
+        year: decodeYear(values.year)[0],
       };
     },
     split() {
