@@ -24,7 +24,7 @@ npm i --save vin-decode
 ```
 
 **Get information from VIN**
-```bash
+```javascript
 import vinDecoder from 'vin-decode';
 
 vinDecoder('BADVINNUMBER'); // will return false (currently checks only the length of VIN)

@@ -75,6 +75,10 @@ const decodeYear = code => {
 
   const yearOffset = yearCodes.indexOf(code);
 
+  if (yearOffset === -1) {
+    return [];
+  }
+
   const possibleYears = [
     2010 + yearOffset,
     1980 + yearOffset,
@@ -105,7 +109,7 @@ const vinDecoder = vin => {
         manufacturer: decodeManufacturer(values.manufacturer),
         country: decodeCountry(values.country),
         possibleYears: decodeYear(values.year),
-        year: decodeYear(values.year)[0],
+        year: decodeYear(values.year)[0] || null,
       };
     },
     split() {
